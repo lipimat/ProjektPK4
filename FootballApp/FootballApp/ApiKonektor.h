@@ -14,8 +14,10 @@ private:
 								 {"x-rapidapi-key", "cf3dcfa9d8msh4a6827aa7fa6556p1c7c63jsn39def2ee1fcd"}};
 	
 	cpr::Response wyslijGET(std::string requestURL);
+	int getRok();
 
 public:
+	
 	void getTabela(NazwaLigi liga);
 };
 
