@@ -5,6 +5,7 @@
 #include <ctime>
 
 #include "ApiKonektor.h"
+#include "ParserDanych.h"
 #include "LigaID.h"
 #include "nlohmann/json.hpp"
 
@@ -41,4 +42,6 @@ void ApiKonektor::getTabela(NazwaLigi liga) {
 	//wyciaganie potrzebnych informacji
 	json jOdpowiedz;
 	stringstream(odpowiedz.text) >> jOdpowiedz;
+
+	vector<json> dane = ParserDanych::parsujTabele(jOdpowiedz);
 }

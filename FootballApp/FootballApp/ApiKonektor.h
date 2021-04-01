@@ -17,7 +17,6 @@ private:
 	int getRok();
 
 public:
-	
 	void getTabela(NazwaLigi liga);
 };
 

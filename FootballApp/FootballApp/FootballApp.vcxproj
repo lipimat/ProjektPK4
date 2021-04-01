@@ -144,10 +144,12 @@
   <ItemGroup>
     <ClCompile Include="ApiKonektor.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ParserDanych.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiKonektor.h" />
     <ClInclude Include="LigaID.h" />
+    <ClInclude Include="ParserDanych.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
