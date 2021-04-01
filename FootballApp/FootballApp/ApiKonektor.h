@@ -3,7 +3,8 @@
 
 #include <cpr/cpr.h>
 #include <string>
-#include "LigaID.h";
+
+#include "LigaID.h"
 
 class ApiKonektor
 {
