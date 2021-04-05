@@ -23,9 +23,17 @@ vector<json> ParserDanych::parsujMecze(json odpowiedz) {
 }
 
 vector<json> ParserDanych::parsujDaneOStrzelcach(json odpowiedz) {
-	vector<json> infoIStatystyki;
+	vector<json> infoIStat;
 	for (auto opisGraczaIStatystyk : odpowiedz["response"]) {
-		infoIStatystyki.push_back(opisGraczaIStatystyk);
+		infoIStat.push_back(opisGraczaIStatystyk);
 	}
-	return infoIStatystyki;
+	return infoIStat;
+}
+
+vector<json> ParserDanych::parsujDaneOAsystentach(json odpowiedz) {
+	vector<json> infoIStat;
+	for (auto daneZawodnikaIStat : odpowiedz["response"]) {
+		infoIStat.push_back(daneZawodnikaIStat);
+	}
+	return infoIStat;
 }

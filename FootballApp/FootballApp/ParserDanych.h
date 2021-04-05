@@ -12,6 +12,7 @@ public:
 	static std::vector<json> parsujTabele(json odpowiedz);
 	static std::vector<json> parsujMecze(json odpowiedz);
 	static std::vector<json> parsujDaneOStrzelcach(json odpowiedz);
+	static std::vector<json> parsujDaneOAsystentach(json odpowiedz);
 };
 
 #endif
