@@ -58,6 +58,5 @@ void ApiKonektor::getPrzyszleMecze(NazwaLigi liga) {
 	//parsowanie
 	json jOdpowiedz;
 	stringstream(odpowiedz.text) >> jOdpowiedz;
-	vector<json> jTerminarz = ParserDanych::parsujPrzyszleMecze(jOdpowiedz);
-	cout << jTerminarz[0] << endl;
+	vector<json> jPrzyszleMeczeInfo = ParserDanych::parsujPrzyszleMecze(jOdpowiedz);
 }
