@@ -10,6 +10,7 @@ class ParserDanych
 {
 public:
 	static std::vector<json> parsujTabele(json odpowiedz);
+	static std::vector<json> parsujPrzyszleMecze(json odpowiedz);
 };
 
 #endif
