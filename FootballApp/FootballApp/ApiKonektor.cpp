@@ -58,5 +58,21 @@ void ApiKonektor::getPrzyszleMecze(NazwaLigi liga) {
 	//parsowanie
 	json jOdpowiedz;
 	stringstream(odpowiedz.text) >> jOdpowiedz;
-	vector<json> jPrzyszleMeczeInfo = ParserDanych::parsujPrzyszleMecze(jOdpowiedz);
+	vector<json> jPrzyszleMeczeInfo = ParserDanych::parsujMecze(jOdpowiedz);
+}
+
+void ApiKonektor::getOstatnieMecze(NazwaLigi liga) {
+	cpr::Response odpowiedz = wyslijGET(URL
+		+ "fixtures?league=" + to_string(liga)
+		+ "&last=10");
+
+	//sprawdzenie czy serwer dobrze odpowiedzial
+	if (odpowiedz.status_code != 200) {
+		throw("Blad, sprobuj ponownie pozniej");
+	}
+
+	//parsowanie
+	json jOdpowiedz;
+	stringstream(odpowiedz.text) >> jOdpowiedz;
+	vector<json> jOstatnieMeczeInfo = ParserDanych::parsujMecze(jOdpowiedz);
 }

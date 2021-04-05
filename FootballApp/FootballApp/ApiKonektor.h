@@ -19,6 +19,7 @@ private:
 public:
 	void getTabela(NazwaLigi liga);
 	void getPrzyszleMecze(NazwaLigi liga);
+	void getOstatnieMecze(NazwaLigi liga);
 };
 
 #endif
