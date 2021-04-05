@@ -20,6 +20,7 @@ public:
 	void getTabela(NazwaLigi liga);
 	void getPrzyszleMecze(NazwaLigi liga);
 	void getOstatnieMecze(NazwaLigi liga);
+	void getNajlepsiStrzelcy(NazwaLigi liga);
 };
 
 #endif

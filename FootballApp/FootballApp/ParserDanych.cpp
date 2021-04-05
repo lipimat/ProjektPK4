@@ -14,10 +14,18 @@ vector<json> ParserDanych::parsujTabele(json odpowiedz) {
 	return jTabela;
 }
 
-vector<json> ParserDanych::parsujPrzyszleMecze(json odpowiedz) {
+vector<json> ParserDanych::parsujMecze(json odpowiedz) {
 	vector<json> jPrzyszleMecze;
 	for (auto opisMeczu : odpowiedz["response"]) {
 		jPrzyszleMecze.push_back(opisMeczu);
 	}
 	return jPrzyszleMecze;
+}
+
+vector<json> ParserDanych::parsujDaneOStrzelcach(json odpowiedz) {
+	vector<json> infoIStatystyki;
+	for (auto opisGraczaIStatystyk : odpowiedz["response"]) {
+		infoIStatystyki.push_back(opisGraczaIStatystyk);
+	}
+	return infoIStatystyki;
 }

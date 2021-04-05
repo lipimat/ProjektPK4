@@ -76,3 +76,17 @@ void ApiKonektor::getOstatnieMecze(NazwaLigi liga) {
 	stringstream(odpowiedz.text) >> jOdpowiedz;
 	vector<json> jOstatnieMeczeInfo = ParserDanych::parsujMecze(jOdpowiedz);
 }
+
+void ApiKonektor::getNajlepsiStrzelcy(NazwaLigi liga) {
+	cpr::Response odpowiedz = wyslijGET(URL
+		+ "players/topscorers?league=" + to_string(liga)
+		+ "&season=" + to_string(getRok()));
+
+	if (sprawdzStatusOdpowiedzi(odpowiedz) == 2) throw("Wystapil bug po stronie serwera, przepraszamy sprobuj pozniej");
+	else if (sprawdzStatusOdpowiedzi(odpowiedz) == -1) throw("Wystapil problem, sprobuj ponownie pozniej");
+
+	//parsowanie
+	json jOdpowiedz;
+	stringstream(odpowiedz.text) >> jOdpowiedz;
+	vector<json> jNajlepsiStrzelcyInfoIStatystyki = ParserDanych::parsujDaneOStrzelcach(jOdpowiedz);
+}
