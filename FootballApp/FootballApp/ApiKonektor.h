@@ -15,7 +15,7 @@ private:
 	
 	cpr::Response wyslijGET(std::string requestURL);
 	int getRok();
-
+	int sprawdzStatusOdpowiedzi(cpr::Response odpowiedz);
 public:
 	void getTabela(NazwaLigi liga);
 	void getPrzyszleMecze(NazwaLigi liga);
