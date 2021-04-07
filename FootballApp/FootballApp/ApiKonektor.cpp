@@ -29,19 +29,80 @@ int ApiKonektor::getRok() {
 	}
 }
 
+int ApiKonektor::sprawdzStatusOdpowiedzi(cpr::Response odpowiedz) {
+	if (odpowiedz.status_code == 200) return 1;
+	else if (odpowiedz.status_code == 204) return 2;
+	else return -1;
+}
+
 void ApiKonektor::getTabela(NazwaLigi liga) {
 	cpr::Response odpowiedz = wyslijGET(URL 
 		+ "standings?season=" + to_string(getRok()) 
 		+ "&league="+ to_string(liga));
 	
-	//sprawdzenie czy serwer dobrze odpowiedzial
-	if (odpowiedz.status_code != 200) {
-		throw("Blad, sprobuj ponownie pozniej");
-	}
+	if (sprawdzStatusOdpowiedzi(odpowiedz) == 2) throw("Wystapil bug po stronie serwera, przepraszamy sprobuj pozniej");
+	else if (sprawdzStatusOdpowiedzi(odpowiedz) == -1) throw("Wystapil problem, sprobuj ponownie pozniej");
 
-	//wyciaganie potrzebnych informacji
+	//parsowanie
 	json jOdpowiedz;
 	stringstream(odpowiedz.text) >> jOdpowiedz;
+	vector<json> jTabela = ParserDanych::parsujTabele(jOdpowiedz);
+}
 
-	vector<json> dane = ParserDanych::parsujTabele(jOdpowiedz);
+void ApiKonektor::getPrzyszleMecze(NazwaLigi liga) {
+	cpr::Response odpowiedz = wyslijGET(URL
+		+ "fixtures?league=" + to_string(liga)
+		+ "&next=10");
+
+	if (sprawdzStatusOdpowiedzi(odpowiedz) == 2) throw("Wystapil bug po stronie serwera, przepraszamy sprobuj pozniej");
+	else if (sprawdzStatusOdpowiedzi(odpowiedz) == -1) throw("Wystapil problem, sprobuj ponownie pozniej");
+
+	//parsowanie
+	json jOdpowiedz;
+	stringstream(odpowiedz.text) >> jOdpowiedz;
+	vector<json> jPrzyszleMeczeInfo = ParserDanych::parsujMecze(jOdpowiedz);
+}
+
+void ApiKonektor::getOstatnieMecze(NazwaLigi liga) {
+	cpr::Response odpowiedz = wyslijGET(URL
+		+ "fixtures?league=" + to_string(liga)
+		+ "&last=10");
+
+	if (sprawdzStatusOdpowiedzi(odpowiedz) == 2) throw("Wystapil bug po stronie serwera, przepraszamy sprobuj pozniej");
+	else if (sprawdzStatusOdpowiedzi(odpowiedz) == -1) throw("Wystapil problem, sprobuj ponownie pozniej");
+
+	//parsowanie
+	json jOdpowiedz;
+	stringstream(odpowiedz.text) >> jOdpowiedz;
+	vector<json> jOstatnieMeczeInfo = ParserDanych::parsujMecze(jOdpowiedz);
+}
+
+//20 graczy
+void ApiKonektor::getNajlepsiStrzelcy(NazwaLigi liga) {
+	cpr::Response odpowiedz = wyslijGET(URL
+		+ "players/topscorers?league=" + to_string(liga)
+		+ "&season=" + to_string(getRok()));
+
+	if (sprawdzStatusOdpowiedzi(odpowiedz) == 2) throw("Wystapil bug po stronie serwera, przepraszamy sprobuj pozniej");
+	else if (sprawdzStatusOdpowiedzi(odpowiedz) == -1) throw("Wystapil problem, sprobuj ponownie pozniej");
+
+	//parsowanie
+	json jOdpowiedz;
+	stringstream(odpowiedz.text) >> jOdpowiedz;
+	vector<json> jNajlepsiStrzelcyInfoIStatystyki = ParserDanych::parsujDaneOStrzelcach(jOdpowiedz);
+}
+
+//20 graczy
+void ApiKonektor::getNajlepsiAsystenci(NazwaLigi liga) {
+	cpr::Response odpowiedz = wyslijGET(URL
+		+ "players/topassists?league=" + to_string(liga)
+		+ "&season=" + to_string(getRok()));
+	
+	if (sprawdzStatusOdpowiedzi(odpowiedz) == 2) throw("Wystapil bug po stronie serwera, przepraszamy sprobuj pozniej");
+	else if (sprawdzStatusOdpowiedzi(odpowiedz) == -1) throw("Wystapil problem, sprobuj ponownie pozniej");
+
+	//parsowanie
+	json jOdpowiedz;
+	stringstream(odpowiedz.text) >> jOdpowiedz;
+	vector<json> jNajlepsiStrzelcyInfoIStatystyki = ParserDanych::parsujDaneOAsystentach(jOdpowiedz);
 }
