@@ -152,12 +152,20 @@
   <ItemGroup>
     <ClCompile Include="ApiKonektor.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NajlepsiZawodnicy.cpp" />
+    <ClCompile Include="OstatnieMecze.cpp" />
     <ClCompile Include="ParserDanych.cpp" />
+    <ClCompile Include="Tabela.cpp" />
+    <ClCompile Include="Terminarz.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiKonektor.h" />
     <ClInclude Include="LigaID.h" />
+    <ClInclude Include="NajlepsiZawodnicy.h" />
+    <ClInclude Include="OstatnieMecze.h" />
     <ClInclude Include="ParserDanych.h" />
+    <ClInclude Include="Tabela.h" />
+    <ClInclude Include="Terminarz.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
