@@ -1,7 +1,7 @@
 #pragma once
 #include <array>
 #include <memory>
-
+#include <string>
 using namespace std;
 
 /* Wszystkie klasy maj¹ tablice z STL Array(¿eby by³o fajne indeksowanie) , u¿y³em smart pointerów ¿eby

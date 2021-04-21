@@ -24,6 +24,18 @@
     <ClCompile Include="ParserDanych.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NajlepsiZawodnicy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OstatnieMecze.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tabela.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Terminarz.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LigaID.h">
@@ -33,6 +45,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ParserDanych.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NajlepsiZawodnicy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OstatnieMecze.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tabela.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Terminarz.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
