@@ -1,0 +1,5 @@
+﻿  ApiKonektor.cpp
+  Liga.cpp
+  Generating Code...
+LINK : warning LNK4067: ambiguous entry point; selected 'WinMainCRTStartup'
+  FootballApp.vcxproj -> C:\Users\matju\OneDrive\Pulpit\ProjektPK4\FootballApp\Debug\FootballApp.exe
